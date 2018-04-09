@@ -53,11 +53,23 @@ public class TodoListController {
      */
     @RequestMapping(value = "/api/todolist", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> getAllTodoItems() {
-        try {
-            return new ResponseEntity<List<TodoItem>>(todoItemRepository.findAll(), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<String>("Nothing found", HttpStatus.NOT_FOUND);
-        }
+        final List<TodoItem> todoItems = null;
+        return new ResponseEntity<List<TodoItem>>(todoItems, HttpStatus.OK);
+        /**
+         * Let users do the following things:
+         * 
+         * 1. Get the entire list of to-do items. change 'null' to 'todoItemRepository.findAll()'
+         * 2. Add a try-catch block just like other methods do. 
+         * 
+         * Answer:
+         * try {
+         *     final List<TodoItem> todoItems = todoItemRepository.findAll();
+         *     return new ResponseEntity<List<TodoItem>>(todoItems, HttpStatus.OK);
+         * } catch (Exception e) {
+         *     return new ResponseEntity<String>("Nothing found", HttpStatus.NOT_FOUND);
+         * }
+         * 
+         */
     }
 
     /**
@@ -99,6 +111,5 @@ public class TodoListController {
         } catch (Exception e) {
             return new ResponseEntity<String>("Entity deletion failed", HttpStatus.NOT_FOUND);
         }
-
     }
 }
